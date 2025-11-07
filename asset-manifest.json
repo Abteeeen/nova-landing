@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/nova-landing/static/css/main.8c99ff32.css",
+    "main.js": "/nova-landing/static/js/main.fed963cb.js",
+    "static/js/453.d7446e4a.chunk.js": "/nova-landing/static/js/453.d7446e4a.chunk.js",
+    "index.html": "/nova-landing/index.html",
+    "main.8c99ff32.css.map": "/nova-landing/static/css/main.8c99ff32.css.map",
+    "main.fed963cb.js.map": "/nova-landing/static/js/main.fed963cb.js.map",
+    "453.d7446e4a.chunk.js.map": "/nova-landing/static/js/453.d7446e4a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8c99ff32.css",
+    "static/js/main.fed963cb.js"
+  ]
+}
