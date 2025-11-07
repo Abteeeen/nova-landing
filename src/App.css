@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+:root{
+  --bg:#0b0c0e;
+  --panel:#0f1316;
+  --muted:#9aa3b2;
+  --gold:#d4a017;
+  --ember:#ff7a1a;
+  --stone:#1a1e22;
+  --glass: rgba(255,255,255,0.03);
+  --accent-gradient: linear-gradient(90deg, #ff9a3c, #ffd36b);
+  --radius:16px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* base */
+*{box-sizing:border-box}
+html,body,#root,.app{height:100%;margin:0}
+body{
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(circle at 10% 10%, rgba(255,120,50,0.03), transparent 20%), var(--bg);
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* container */
+.container{max-width:1200px;margin:0 auto;padding:0 1rem}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:60;
+  background: linear-gradient(180deg, rgba(10,10,10,0.6), rgba(10,10,10,0.35));
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+.brand{font-weight:800;letter-spacing:-0.02em}
+.brand .dot{color:var(--gold)}
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-weight:600}
+.nav-links a:hover{color:var(--gold)}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:82vh;
+  display:flex;align-items:center;
+  overflow:hidden;
+  padding:3.5rem 0;
+}
+.hero .left{
+  flex:1;padding:2rem;
+}
+.hero .right{
+  width:560px;max-width:48%;min-width:320px;padding:2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* hero text */
+.title{
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size:clamp(2.2rem,5.5vw,4rem);
+  line-height:1.02;margin:0 0 .6rem;
+  text-shadow: 0 6px 28px rgba(0,0,0,0.8);
+}
+.title .accent{color:var(--gold);text-shadow:0 8px 28px rgba(212,160,23,0.06)}
+.lead{color:var(--muted);font-size:1.05rem;margin-bottom:1.2rem}
+
+/* CTA */
+.hero .actions{display:flex;gap:1rem;align-items:center}
+.btn{
+  border:0;padding:.85rem 1.6rem;border-radius:999px;font-weight:800;cursor:pointer;
+  box-shadow: 0 6px 22px rgba(2,6,23,0.65);
+}
+.btn-primary{
+  background:var(--accent-gradient); color:#111;
+}
+.btn-ghost{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)
 }
 
-.App-link {
-  color: #61dafb;
+/* overlay panels */
+.panel{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:12px;padding:1rem;border:1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* feature grid */
+.features{padding:4.5rem 0;background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent)}
+.features h2{text-align:center;margin-bottom:1rem;color:#fff}
+.grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:1.5rem}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:14px;padding:1.4rem;border:1px solid rgba(255,255,255,0.03);
+  transform-origin:center;transition:transform .35s ease, box-shadow .35s ease;
+  cursor:pointer;
 }
+.card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 18px 40px rgba(0,0,0,0.6)}
+.card .icon{font-size:1.6rem;margin-bottom:.6rem}
+.card .tag{
+  display:inline-block;background:linear-gradient(90deg,#442b00,#7a4a13);padding:.25rem .6rem;border-radius:999px;font-weight:700;color:#fff;margin-bottom:.6rem
+}
+
+/* flip/tilt interactive (mouse parallax) */
+.card--tilt{perspective:1200px}
+.card--tilt .inner{transition:transform .2s ease;transform-style:preserve-3d}
+
+/* battle arena */
+.arena{padding:4.5rem 0;position:relative}
+.arena-grid{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center}
+.arena .infobox{padding:1rem;border-radius:12px}
+.canvas-wrap{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+
+/* Upgrades */
+.upgrades{padding:4rem 0;background:linear-gradient(180deg, rgba(255,120,60,0.02), transparent)}
+.upgrade-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+
+/* testimonials, cta, footer */
+.testimonials{padding:4rem 0}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.cta{padding:4rem 0;text-align:center}
+.footer{padding:2rem;border-top:1px solid rgba(255,255,255,0.03);background:transparent}
+
+/* responsiveness */
+@media (max-width:960px){
+  .hero{padding:2rem 0}
+  .hero .right{display:none}
+  .arena-grid{grid-template-columns:1fr}
+}
+/* === 3D Canvas Wrapper Fix === */
+.canvas-wrap {
+  position: relative;
+  height: 420px;
+  background: radial-gradient(circle at top, rgba(255, 120, 60, 0.05), transparent 70%);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
